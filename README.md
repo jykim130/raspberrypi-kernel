@@ -17,13 +17,13 @@ Ubuntu(VM)에서:
 git clone https://github.com/jykim130/raspberrypi-kernel.git
 cd raspberrypi-kernel
 chmod +x rpi5_cross_build.sh
-./rpi5_cross_build.sh -i 192.168.0.132      # 라즈베리파이 IP
+./rpi5_cross_build.sh -i [ip주소]      # 라즈베리파이 IP를 [] 빼고 입력하면 됩니다.
 ```
 
 끝나고 재부팅한 뒤 1~2분 후:
 
 ```bash
-ssh pi@192.168.0.132 uname -r               # 결과에 v8 이 들어 있으면 성공
+ssh pi@[ip 주소] uname -r               # 결과에 v8 이 들어 있으면 성공
 ```
 
 ## 옵션
@@ -41,15 +41,6 @@ ssh pi@192.168.0.132 uname -r               # 결과에 v8 이 들어 있으면 
 | `-r` | 설치 후 묻지 않고 바로 재부팅 |
 | `-h` | 도움말 |
 
-### 예시
-
-```bash
-./rpi5_cross_build.sh                               # 빌드 + 압축만 (/usr/src/linux.zip)
-./rpi5_cross_build.sh -i 192.168.0.132              # 빌드 → 전송 → 설치 → (재부팅 여부 질문)
-./rpi5_cross_build.sh -i 192.168.0.132 -j 8 -r      # 8코어로 빌드, 끝나면 자동 재부팅
-./rpi5_cross_build.sh -i 192.168.0.132 -s -r        # 재빌드 없이 다시 설치 (버전이 안 바뀌었을 때)
-./rpi5_cross_build.sh -i 192.168.0.50 -u myuser     # 사용자명이 pi 가 아닐 때
-```
 
 ## 스크립트가 하는 일
 
